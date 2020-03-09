@@ -1,5 +1,5 @@
 # On the Role of Conceptualization in Commonsense Knowledge Graph Construction
-[Paper](paper.pdf)
+[Paper](https://arxiv.org/abs/2003.03239)
 # How to reproduce
 ## Data
 * Probase: https://concept.research.microsoft.com/, to data/probase
