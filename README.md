@@ -1,6 +1,9 @@
 # On the Role of Conceptualization in Commonsense Knowledge Graph Construction
 [Paper](https://arxiv.org/abs/2003.03239)
-# How to reproduce
+# Pretrained models
+[Atomic: CCC75-22k](https://hkustconnect-my.sharepoint.com/:u:/g/personal/mhear_connect_ust_hk/Eej13vBzJD1DrNY5BoctdoUBPGFnidIeHZA9ETGaGV6nWw?e=WSdj8j)
+[ASER: CCC75-52k](https://hkustconnect-my.sharepoint.com/:u:/g/personal/mhear_connect_ust_hk/EfnMgMtzkjNJnzZtc8pnJZMBOBjkuSDA2GZ4NB12ghpALg?e=sYdNFI)
+# Pipeline
 ## Data
 * Probase: https://concept.research.microsoft.com/, to data/probase
 * ASER 0.1.0: https://hkust-knowcomp.github.io/ASER/, to data/aser
@@ -34,7 +37,7 @@ python train.py
 --device='cuda:0'
 --hparams='conceptualize_rate=0.75,expr=aser,ht_symmetry=True'
 --run_name='aser_ccc75'
---eval_text_path=data/aser/node_contrastive_dev.tsv:data/aser/data/concept_contrastive_dev.tsv
+--eval_text_path=data/aser/node_contrastive_dev.tsv:data/aser/concept_contrastive_dev.tsv
 ```
 * Atomic
 ```
@@ -45,18 +48,18 @@ python train.py
 --device='cuda:0'
 --hparams='conceptualize_rate=0.75,expr=atomic,dropout_rate=0.3'
 --run_name='atomic_ccc75'
---eval_text_path=data/atomic/node_contrastive_dev.tsv:data/atomic/data/concept_contrastive_dev.tsv
+--eval_text_path=data/atomic/node_contrastive_dev.tsv:data/atomic/concept_contrastive_dev.tsv
 ```
 ## Generation
 * ASER
 ```
 python generate.py
 --data_dir=data/aser --run_name=ccc75_100k_gen --device=cuda:0
---output_dir=generations/aser --model_path=ckpt/aser/aser_ccc75_1206_1601/checkpoint_100000
+--output_dir=generations/aser --model_path=ckpt/aser/checkpoint_52000
 ```
 * Atomic
 ```
 python generate.py
 --data_dir=data/atomic --run_name=ccc75_140k_gen --device=cuda:0
---output_dir=generations/atomic --model_path=ckpt/atomic/atomic_ccc75_1209_1646/checkpoint_140000
+--output_dir=generations/atomic --model_path=ckpt/atomic/checkpoint_22000
 ```
